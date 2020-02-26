@@ -1,0 +1,42 @@
+{
+  "name": "@j.u.p.iter/redux-socket-provider",
+  "version": "0.0.0-semantically-released",
+  "description": "SocketIO provider",
+  "keywords": [
+    "redux",
+    "socketIO"
+  ],
+  "main": "dist/lib/redux-socket-provider.cjs.js",
+  "module": "dist/lib/redux-socket-provider.esm.js",
+  "umd:main": "dist/lib/redux-socket-provider.umd.min.js",
+  "typings": "dist/types",
+  "repository": "git@github.com:j-u-p-iter/redux-socket-provider.git",
+  "author": "Leontyev Kirill (j.u.p.iter) <pn79122821224@gmail.com> (http://j-u-p-iter.pro/)",
+  "license": "MIT",
+  "scripts": {
+    "commit": "jupiter-scripts precommit --allowJs",
+    "build": "jupiter-scripts build --bundle",
+    "start": "yarn run build --watch",
+    "lint": "jupiter-scripts lint --format codeFrame",
+    "lint:fix": "yarn run lint --fix",
+    "test": "jupiter-scripts test"
+  },
+  "devDependencies": {
+    "@j.u.p.iter/jupiter-scripts": "^1.14.1",
+    "@testing-library/react": "^9.4.0",
+    "@types/react": "^16.8.8",
+    "@types/socket.io-client": "^1.4.32",
+    "react": "^16.8.2",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.4",
+    "socket.io-client": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-redux": ">=7.1.3",
+    "redux": ">=4.0.4"
+  },
+  "dependencies": {
+    "to-snake-case": "^1.0.0"
+  }
+}
