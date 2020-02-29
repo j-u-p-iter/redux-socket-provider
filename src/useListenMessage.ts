@@ -4,32 +4,23 @@ import { useDispatch } from "react-redux";
 import { createActionType } from "./helpers";
 import { ReduxSocketProviderContext } from "./ReduxSocketProviderContext";
 
-export type UseGetDataHook = (
+export type UseListenMessage = (
   eventName: string
 ) => {
-  data: any;
   error: string;
-  isLoading: boolean;
-  getData: () => void;
+  data: { [key: string]: any };
 };
-
-export const useGetData: UseGetDataHook = eventName => {
+export const useListenMessage: UseListenMessage = eventName => {
   const { socket } = useContext(ReduxSocketProviderContext);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [data, setData] = useState({});
-  const [error, setError] = useState("");
   const dispatch = useDispatch();
 
-  const getData = () => {
-    setIsLoading(true);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState<string>("");
 
-    dispatch({ type: createActionType(eventName) });
-
-    socket.emit(
+  useEffect(() => {
+    socket.on(
       eventName,
       ({ error: errorFromResponse, data: dataFromResponse }) => {
-        setIsLoading(false);
-
         if (errorFromResponse) {
           setError(errorFromResponse);
           return;
@@ -43,16 +34,10 @@ export const useGetData: UseGetDataHook = eventName => {
         setData(dataFromResponse);
       }
     );
-  };
-
-  useEffect(() => {
-    getData();
   }, []);
 
   return {
     data,
-    error,
-    isLoading,
-    getData
+    error
   };
 };

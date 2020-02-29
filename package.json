@@ -19,16 +19,27 @@
     "start": "yarn run build --watch",
     "lint": "jupiter-scripts lint --format codeFrame",
     "lint:fix": "yarn run lint --fix",
-    "test": "jupiter-scripts test"
+    "test": "jupiter-scripts test",
+    "start-example:client": "parcel ./example/client/index.html",
+    "start-example:server": "nodemon ./example/server",
+    "start-example": "concurrently 'yarn start-example:client' 'yarn start-example:server'",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "@j.u.p.iter/jupiter-scripts": "^1.14.1",
     "@testing-library/react": "^9.4.0",
     "@types/react": "^16.8.8",
     "@types/socket.io-client": "^1.4.32",
-    "react": "^16.8.2",
+    "concurrently": "^5.1.0",
+    "cypress": "^4.0.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.0.0",
     "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
+    "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0"
   },
   "peerDependencies": {
@@ -37,6 +48,7 @@
     "redux": ">=4.0.4"
   },
   "dependencies": {
+    "react-dom": "^16.13.0",
     "to-snake-case": "^1.0.0"
   }
 }

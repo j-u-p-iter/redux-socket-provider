@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import * as React from "react";
 import io from "socket.io-client";
 
 import { ReduxSocketProviderContext } from "./ReduxSocketProviderContext";
@@ -7,7 +7,9 @@ interface ReduxSocketProviderProps {
   url: string;
 }
 
-export const ReduxSocketProvider: FC<ReduxSocketProviderProps> = ({
+const { useRef } = React;
+
+export const ReduxSocketProvider: React.FC<ReduxSocketProviderProps> = ({
   url,
   children
 }) => {

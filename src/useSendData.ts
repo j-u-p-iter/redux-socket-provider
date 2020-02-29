@@ -15,7 +15,7 @@ export type UseSendDataHook = (
 export const useSendData: UseSendDataHook = eventName => {
   const { socket } = useContext(ReduxSocketProviderContext);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const [error, setError] = useState<string>("");
   const dispatch = useDispatch();
 
