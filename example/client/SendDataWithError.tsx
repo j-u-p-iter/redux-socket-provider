@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 import { useSendData } from '../../src'; 
+import { messages } from './constants';
 
 export const SendDataWithError = () => {
-  const { error, sendData, isLoading } = useSendData('updateItemWithError');
+  const { error, sendData, isLoading } = useSendData(messages.UPDATE_ITEM_WITH_ERROR);
 
   const handleClick = withError => {
     sendData({ data: { counter: 1 } });

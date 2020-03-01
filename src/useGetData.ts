@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { createActionType } from "./helpers";
 import { ReduxSocketProviderContext } from "./ReduxSocketProviderContext";
 
-export type UseGetDataHook = (
+type UseGetDataHook = (
   eventName: string
 ) => {
   data: any;
@@ -15,10 +15,11 @@ export type UseGetDataHook = (
 
 export const useGetData: UseGetDataHook = eventName => {
   const { socket } = useContext(ReduxSocketProviderContext);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [data, setData] = useState({});
-  const [error, setError] = useState("");
   const dispatch = useDispatch();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState("");
 
   const getData = () => {
     setIsLoading(true);

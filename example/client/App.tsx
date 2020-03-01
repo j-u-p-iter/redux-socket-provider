@@ -11,8 +11,10 @@ import { GetDataWithError } from './GetDataWithError';
 import { ListenMessage } from './ListenMessage';
 import { ListenMessageWithError } from './ListenMessageWithError';
 
+import { reducer } from './reducer';
+
 export const App: React.FC = () => {
-  const store = createStore(state => state);
+  const store = createStore(reducer);
 
   return (
     <Provider store={store}>

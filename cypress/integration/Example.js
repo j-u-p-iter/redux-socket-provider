@@ -8,8 +8,11 @@ describe('Example app', () => {
       it('sends and recieves data properly', () => {
         cy.get('[data-cy="sendData"]').click();
 
-        cy.get('[data-cy="spinner"]');
-        cy.get('[data-cy="result"]').should('have.text', '2');
+        cy.get('[data-cy="spinner-from-hook"]');
+        cy.get('[data-cy="spinner-from-redux"]');
+
+        cy.get('[data-cy="result-from-hook"]').should('have.text', '2');
+        cy.get('[data-cy="result-from-redux"]').should('have.text', '2');
       });
     })
 
@@ -34,8 +37,11 @@ describe('Example app', () => {
       });
 
       it('sends and recieves data properly', () => {
-        cy.get('[data-cy="spinner"]');
-        cy.get('[data-cy="result"]').should('have.text', '1');
+        cy.get('[data-cy="spinner-from-redux"]');
+        cy.get('[data-cy="spinner-from-hook"]');
+
+        cy.get('[data-cy="result-from-redux"]').should('have.text', '1');
+        cy.get('[data-cy="result-from-hook"]').should('have.text', '1');
       });
     });
 
@@ -45,8 +51,8 @@ describe('Example app', () => {
       });
 
       it('sends and recieves data properly', () => {
-        cy.get('[data-cy="spinner"]');
-        cy.get('[data-cy="error"]').should('have.text', 'Error message');
+        cy.get('[data-cy="spinner-from-hook"]');
+        cy.get('[data-cy="error-from-hook"]').should('have.text', 'Error message');
       });
     });
   });
@@ -58,7 +64,8 @@ describe('Example app', () => {
       });
 
       it('sends and recieves data properly', () => {
-        cy.get('[data-cy="result"]').should('have.text', '1');
+        cy.get('[data-cy="result-from-hook"]').should('have.text', '1');
+        cy.get('[data-cy="result-from-redux"]').should('have.text', '1');
       });
     });
 
@@ -68,7 +75,7 @@ describe('Example app', () => {
       });
 
       it('sends and recieves data properly', () => {
-        cy.get('[data-cy="error"]').should('have.text', 'Error message');
+        cy.get('[data-cy="error-from-hook"]').should('have.text', 'Error message');
       });
     });
   });

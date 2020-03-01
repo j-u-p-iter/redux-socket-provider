@@ -8,7 +8,7 @@ export const createActionType: CreateActionType = (
   eventName: string,
   withSuccessType
 ): string => {
-  const actionBaseName = toSnakeCase(eventName);
+  const actionBaseName = toSnakeCase(eventName).toUpperCase();
   const actionNameScope = "REDUX_SOCKET_PROVIDER";
   const actionSuffix = withSuccessType ? "_WITH_SUCCESS" : "";
 
