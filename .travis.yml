@@ -11,6 +11,7 @@ jobs:
     - stage: validate
       script: jupiter-scripts lint
       script: yarn run ci
+      script: kill $(jobs -p) || true
     - stage: deploy
       script: yarn run build
       after_success: jupiter-scripts deploy
