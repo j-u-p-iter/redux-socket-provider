@@ -1,6 +1,6 @@
 {
   "name": "@j.u.p.iter/redux-socket-provider",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.1",
   "description": "SocketIO provider",
   "keywords": [
     "redux",
