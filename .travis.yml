@@ -6,6 +6,10 @@ branches:
     - master
 node_js:
   - '10'
+cache:
+  npm: true
+  directories:
+    - ~/.cache
 jobs:
   include:
     - stage: validate
