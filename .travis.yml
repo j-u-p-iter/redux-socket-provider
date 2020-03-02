@@ -10,10 +10,12 @@ jobs:
   include:
     - stage: validate
       script: jupiter-scripts lint
-    - script: yarn run ci
+    - state: test
+      script: yarn run ci
     - stage: deploy
       script: yarn run build
       after_success: jupiter-scripts deploy
 stages:
   validate
+  test
   deploy
