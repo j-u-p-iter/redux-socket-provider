@@ -47,5 +47,5 @@ $ cd /root/project/folder
 ```
 
 ```
-$ npm install @j.u.p.iter/redux-socket-provider --save-dev
+$ yarn add @j.u.p.iter/redux-socket-provider --dev
 ```
