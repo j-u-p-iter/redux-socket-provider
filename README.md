@@ -18,4 +18,4 @@ server more predictable and structured in react applications, that use redux pat
 - package provides set of react hooks to organize socket communication on client side. You won't use socket api directly in your code base. Instead you'll use react hooks api.
 - we splitted socket's messages on three different groups. For each group of messages we created separate group of hooks to handle these messages.
 - hooks provide ability to process loading process, handle errors and successful results.
-- package dispatches set of redux actions you can use to store handle data in your application.
+- package dispatches set of redux actions you can use to handle data in your application.
