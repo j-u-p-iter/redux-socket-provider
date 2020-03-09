@@ -19,3 +19,12 @@ server more predictable and structured in react applications, that use redux pat
 - we splitted socket's messages on three different groups. For each group of messages we created separate group of hooks to handle these messages.
 - hooks provide ability to process loading process, handle errors and successful results.
 - package dispatches set of redux actions you can use to handle data in your application.
+
+## Installation
+
+You can install this project, via [`npm`](https://docs.npmjs.com/) or [`yarn`](https://yarnpkg.com/) package managers.
+
+### Installing via npm
+npm package manager is bundled with [node](https://nodejs.org/en/docs/)
+
+
