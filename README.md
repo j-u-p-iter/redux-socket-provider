@@ -100,4 +100,4 @@ const App = () => {
 };
 ```
 
-ReduxSocketProvider accepts one single prop - `url` - to create socket connection with.
+ReduxSocketProvider accepts one single prop - `url`. Using this url ReduxSocketProvider creates socket connection with server (creates communication channel).
