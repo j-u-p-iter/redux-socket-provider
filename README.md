@@ -11,4 +11,5 @@ purpose of consistency. It's easier and more joyable to play the game, when you 
 ## The solution
 
 This package sets up for you some set of rules to make socket communication between client and 
-server more predictable and structured.
+server more predictable and structured in react applications, that use redux pattern.
+
