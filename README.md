@@ -49,3 +49,22 @@ $ cd /root/project/folder
 ```
 $ yarn add @j.u.p.iter/redux-socket-provider --dev
 ```
+
+### Peer dependencies
+This package requires some [peer dependencies](https://nodejs.org/ru/blog/npm/peer-dependencies/). These are dependencies, that our package expects being preinstalled in your project.
+
+Required peerdependencies:
+- react
+- redux
+- react-redux
+
+## Examples
+
+### Read source code of an example
+
+[`example`](https://github.com/j-u-p-iter/redux-socket-provider/tree/master/example) folder of this package contains example of the small app with all possible use cases of this package. We highly recommend to explore source code for better understanding of all possibilities this package provides for you.
+
+### Run tests
+
+We use cypress for e2e testing of api this package provides. We recommend you to clone this package and to run this e2e tests. You can find all test cases [here](https://github.com/j-u-p-iter/redux-socket-provider/blob/master/cypress/integration/Example.js). Playing with tests and reading tests is also great a wait to understand package's api better.
+
