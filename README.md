@@ -13,3 +13,9 @@ purpose of consistency. It's easier and more joyable to play the game, when you 
 This package sets up for you some set of rules to make socket communication between client and 
 server more predictable and structured in react applications, that use redux pattern.
 
+
+### Benefits:
+- package provides set of react hooks to organize socket communication on client side. You won't use socket api directly in your code base. Instead you'll use react hooks api.
+- hooks are splitted on three separate groups. Each group has its own purpose.
+- hooks provide ability to process loading process, handle errors and successful results.
+- package dispatches set of redux actions you can use to store handle data in your application.
