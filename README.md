@@ -60,11 +60,44 @@ Required peerdependencies:
 
 ## Examples
 
-### Read source code of an example
+### Base examples
+
+#### Case 1
+
+#### Case 2
+
+#### Case 3
+
+### More examples
+
+#### Read source code of an example
 
 [`example`](https://github.com/j-u-p-iter/redux-socket-provider/tree/master/example) folder of this package contains example of the small app with all possible use cases of this package. We highly recommend to explore source code for better understanding of all possibilities this package provides for you.
 
-### Run tests and read test
+#### Run tests and read test
 
 We use cypress for e2e testing of api this package provides. We recommend you to clone this package and to run this e2e tests. You can find all test cases [here](https://github.com/j-u-p-iter/redux-socket-provider/blob/master/cypress/integration/Example.js). Playing with tests and reading tests is also great a wait to understand package's api better.
 
+## API
+
+### ReduxSocketProvider
+
+Everything starts with ReduxSocketProvider React component. This component is based or React context. 
+It's responsibility to create socket connection and pass socket instance to the child components.
+
+ReduxSocketProvider provides possibility to communicate through sockets to the child components. So all consumers 
+of redux-socket-provider api should be wrapped with this component as in example below:
+
+```
+import { ReduxSocketProvider } from '@j.u.p.iter/redux-socket-provider';
+
+const urlToCreateSocketConnection = 'http://localhost:3000';
+
+const App = () => {
+  <ReduxSocketProvider url={urlToCreateSocketConnection}>
+  ...
+  </ReduxSocketProvider>
+};
+```
+
+ReduxSocketProvider accepts one single prop - `url` - to create socket connection with.
