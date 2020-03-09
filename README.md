@@ -25,6 +25,27 @@ server more predictable and structured in react applications, that use redux pat
 You can install this project, via [`npm`](https://docs.npmjs.com/) or [`yarn`](https://yarnpkg.com/) package managers.
 
 ### Installing via npm
-npm package manager is bundled with [node](https://nodejs.org/en/docs/)
+npm package manager is bundled with [node](https://nodejs.org/en/docs/). So, if you already have preinstalled node (I guess you have), you already have npm.
 
+Go to the root of the project where you want to use this package and install it:
 
+```
+$ cd /root/project/folder
+```
+
+```
+$ npm install @j.u.p.iter/redux-socket-provider --save-dev
+```
+
+### Installing via yarn
+To install the package with yarn you should have yarn on your machine. How to install it you can found out [here]().
+
+After that go to the root of the project where you want to use this package and install it:
+
+```
+$ cd /root/project/folder
+```
+
+```
+$ npm install @j.u.p.iter/redux-socket-provider --save-dev
+```
