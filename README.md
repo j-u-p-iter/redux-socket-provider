@@ -82,7 +82,7 @@ We use cypress for e2e testing of api this package provides. We recommend you to
 
 ### ReduxSocketProvider
 
-Everything starts with ReduxSocketProvider React component. This component is based or React context. 
+Everything starts with ReduxSocketProvider React component. This component is based on React context. 
 It's responsibility to create socket connection and pass socket instance to the child components.
 
 ReduxSocketProvider provides possibility to communicate through sockets to the child components. So all consumers 
@@ -101,3 +101,47 @@ const App = () => {
 ```
 
 ReduxSocketProvider accepts one single prop - `url`. Using this url ReduxSocketProvider creates socket connection with server (creates communication channel).
+
+### useGetData hook
+
+This hook emmits message to the server. The purpose of this message is to request data from server. It's similar to GET HTTP request.
+
+In an example below we request all messages from server and render result.
+
+```
+import { useGetData } from '@j.u.p.iter/redux-socket-provider';
+
+const MessagesList = () => {
+  const { data, error, isLoading, getData } = useGetData('getAllMessages');
+  
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+  
+  if (error) {
+    return <div>{error}</div>
+  }
+  
+  return (
+    <>
+      <div conClick={getData}>Resend data</div>
+      
+      <ul>
+        {data.map(({ content }) => {
+          return <li>{content}</li>
+        })}
+      </ul>
+    </>
+  );
+}
+
+```
+
+As we can see from the above example:
+
+- useGetData hook accepts eventName as the first and the only argument
+- useGetData hook returns back set of data:
+-- data - data object, returned from server
+-- error - error message, returned from server
+-- isLoading - status of the process. Until request to the server is not resolved isLoading is equal to true. As soon request to the server is resolved isLoading starts becoming equal to false
+-- getData - callback you can use to send event "getAllMessages" again.
