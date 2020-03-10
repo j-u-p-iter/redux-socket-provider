@@ -112,20 +112,26 @@ In an example below we request all messages from server and render result.
 import { useGetData } from '@j.u.p.iter/redux-socket-provider';
 
 const MessagesList = () => {
+  // sends "getAllMessages" event to server
+  // and returns some data to handle request and it's result
   const { data, error, isLoading, getData } = useGetData('getAllMessages');
   
+  // if request is not still resolved, show this message
   if (isLoading) {
     return <div>Loading...</div>
   }
   
+  // if we got error from server, render this error message
   if (error) {
     return <div>{error}</div>
   }
   
   return (
     <>
-      <div conClick={getData}>Resend data</div>
+      // Click on button to resend data
+      <button onClick={getData}>Resend data</button>
       
+      // render data
       <ul>
         {data.map(({ content }) => {
           return <li>{content}</li>
@@ -136,8 +142,7 @@ const MessagesList = () => {
 }
 
 ```
-
-As we can see from the above example:
+The example is self descriptive. As we can see from the above example:
 
 - useGetData hook accepts eventName as the first and the only argument
 - useGetData hook returns back set of data:
