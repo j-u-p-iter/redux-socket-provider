@@ -141,7 +141,7 @@ As we can see from the above example:
 
 - useGetData hook accepts eventName as the first and the only argument
 - useGetData hook returns back set of data:
--- data - data object, returned from server
--- error - error message, returned from server
--- isLoading - status of the process. Until request to the server is not resolved isLoading is equal to true. As soon request to the server is resolved isLoading starts becoming equal to false
--- getData - callback you can use to send event "getAllMessages" again.
+  - data - data object, returned from server
+  - error - error message, returned from server
+  - isLoading - status of the process. Until request to the server is not resolved isLoading is equal to true. As soon request to the server is resolved isLoading starts becoming equal to false
+  - getData - callback you can use to send event "getAllMessages" again.
