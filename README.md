@@ -108,7 +108,7 @@ This hook emmits message to the server. The purpose of this message is to reques
 
 In an example below we request all messages from server and render result.
 
-```
+```jsx
 import { useGetData } from '@j.u.p.iter/redux-socket-provider';
 
 const MessagesList = () => {
