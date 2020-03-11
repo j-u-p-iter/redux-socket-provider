@@ -152,7 +152,7 @@ The example is self descriptive. As we can see from the above example:
   - getData - callback you can use to send event "getAllMessages" again.
   
   
-  ### useSendData hook
+### useSendData hook
 
 This hook emmits message to the server. The purpose of this message is to do some modifications on server side and to get back response about result of these modifications. It's similar to POST/PUT/DELETE HTTP requests.
 
