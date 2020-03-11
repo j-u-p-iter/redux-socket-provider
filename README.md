@@ -106,7 +106,7 @@ ReduxSocketProvider accepts one single prop - `url`. Using this url ReduxSocketP
 
 This hook emmits message to the server. The purpose of this message is to request data from server. It's similar to GET HTTP request.
 
-In an example below we request all messages from server and render result.
+In the example below we request all messages from server and render result.
 
 ```jsx
 import { useGetData } from '@j.u.p.iter/redux-socket-provider';
@@ -121,7 +121,7 @@ const MessagesList = () => {
     return <div>Loading...</div>
   }
   
-  // if we got error from server, render this error message
+  // if we got an error from the server, render this error message
   if (error) {
     return <div>{error}</div>
   }
@@ -131,7 +131,7 @@ const MessagesList = () => {
       // Click on button to resend data
       <button onClick={getData}>Resend data</button>
       
-      // render data
+      // render all messages data
       <ul>
         {data.map(({ content }) => {
           return <li>{content}</li>
@@ -144,9 +144,55 @@ const MessagesList = () => {
 ```
 The example is self descriptive. As we can see from the above example:
 
-- useGetData hook accepts eventName as the first and the only argument
+- useGetData hook accepts eventName as the first and the only argument. As soon as you call useGetData hook, eventName emmits immediately.
 - useGetData hook returns back set of data:
   - data - data object, returned from server
   - error - error message, returned from server
   - isLoading - status of the process. Until request to the server is not resolved isLoading is equal to true. As soon request to the server is resolved isLoading starts becoming equal to false
   - getData - callback you can use to send event "getAllMessages" again.
+  
+  
+  ### useSendData hook
+
+This hook emmits message to the server. The purpose of this message is to do some modifications on server side and to get back response about result of these modifications. It's similar to POST/PUT/DELETE HTTP requests.
+
+In the example below we send the request to update message with id 1 on server.
+
+```jsx
+import { useSendData } from '@j.u.p.iter/redux-socket-provider';
+
+const MessagesList = () => {
+  // sends "updateMessage" event to server
+  // and returns some data to handle request and it's result
+  const { data, error, isLoading, sendData } = useGetData('updateMessage');
+  
+  // if request is not still resolved, show this message
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+  
+  // if we got an error from server, render this error message
+  if (error) {
+    return <div>{error}</div>
+  }
+  
+  return (
+    <>
+      // Click on button to update message content
+      <button onClick={() => sendData({ id: 1, content: 'New message content' })}>Update message content</button>
+      
+      // render message's data with id equal to 1
+      <div>{data.content}</div>
+    </>
+  );
+}
+
+```
+The example is self descriptive. As we can see from the above example:
+
+- useSendData hook accepts eventName as the first and the only argument. eventName we passed here won't be emmited until we call sendData method.
+- useGetData hook returns back set of data:
+  - data - data object, returned from server after data on server was successfully updated
+  - error - error message, returned from server
+  - isLoading - status of the process. Until request for updating data is not resolved isLoading is equal to true. As soon request for updating data is resolved isLoading starts becoming equal to false
+  - sendData - callback you should call to emmit "updateMessage" event. You should pass data to update in form of object as the first and the only one argument.
