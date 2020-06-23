@@ -20,7 +20,12 @@ export const useListenMessage: UseListenMessage = eventName => {
   useEffect(() => {
     socket.on(
       eventName,
-      ({ error: errorFromResponse, data: dataFromResponse }) => {
+      (
+        { error: errorFromResponse, data: dataFromResponse } = {
+          error: null,
+          data: null
+        }
+      ) => {
         if (errorFromResponse) {
           setError(errorFromResponse);
           return;

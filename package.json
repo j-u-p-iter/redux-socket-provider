@@ -24,7 +24,7 @@
     "start-example:server": "nodemon ./example/server",
     "start-example": "concurrently 'yarn start-example:client' 'yarn start-example:server'",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run && nyc report --reporter=text-summary",
+    "cypress:run": "cypress run",
     "ci": "concurrently --success first -k 'yarn run start-example:client' 'yarn run start-example:server' 'yarn run cypress:run'"
   },
   "devDependencies": {

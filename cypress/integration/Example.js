@@ -13,6 +13,7 @@ describe('Example app', () => {
 
         cy.get('[data-cy="result-from-hook"]').should('have.text', '2');
         cy.get('[data-cy="result-from-redux"]').should('have.text', '2');
+        cy.get('[data-cy="result-from-method"]').should('have.text', '2');
       });
     })
 
@@ -26,6 +27,7 @@ describe('Example app', () => {
 
         cy.get('[data-cy="spinner"]');
         cy.get('[data-cy="error"]').should('have.text', 'Error message');
+        cy.get('[data-cy="errorFromMethod"]').should('have.text', 'Error message');
       });
     })
   });

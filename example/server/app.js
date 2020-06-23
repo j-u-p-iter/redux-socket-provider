@@ -6,6 +6,8 @@ const createSocketServer = require('./socketServer');
 
 createSocketServer(io);
 
-server.listen('5000', () => {
-  console.log('Listen server on http://localhost:5000');
+const SERVER_PORT = 7000;
+
+server.listen(SERVER_PORT, () => {
+  console.log(`Listen server on http://localhost:${SERVER_PORT}`);
 });

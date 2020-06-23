@@ -22,28 +22,34 @@ export const useGetData: UseGetDataHook = eventName => {
   const [error, setError] = useState("");
 
   const getData = () => {
-    setIsLoading(true);
+    return new Promise((resolve, reject) => {
+      setIsLoading(true);
 
-    dispatch({ type: createActionType(eventName) });
+      dispatch({ type: createActionType(eventName) });
 
-    socket.emit(
-      eventName,
-      ({ error: errorFromResponse, data: dataFromResponse }) => {
-        setIsLoading(false);
+      socket.emit(
+        eventName,
+        ({ error: errorFromResponse, data: dataFromResponse }) => {
+          setIsLoading(false);
 
-        if (errorFromResponse) {
-          setError(errorFromResponse);
-          return;
+          if (errorFromResponse) {
+            setError(errorFromResponse);
+
+            reject(errorFromResponse);
+            return;
+          }
+
+          dispatch({
+            type: createActionType(eventName, true),
+            payload: dataFromResponse
+          });
+
+          setData(dataFromResponse);
+
+          resolve(dataFromResponse);
         }
-
-        dispatch({
-          type: createActionType(eventName, true),
-          payload: dataFromResponse
-        });
-
-        setData(dataFromResponse);
-      }
-    );
+      );
+    });
   };
 
   useEffect(() => {

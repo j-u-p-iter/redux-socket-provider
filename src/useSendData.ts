@@ -20,29 +20,34 @@ export const useSendData: UseSendDataHook = eventName => {
   const dispatch = useDispatch();
 
   const sendData = dataToSend => {
-    setIsLoading(true);
+    return new Promise((resolve, reject) => {
+      setIsLoading(true);
 
-    dispatch({ type: createActionType(eventName) });
+      dispatch({ type: createActionType(eventName) });
 
-    socket.emit(
-      eventName,
-      dataToSend,
-      ({ error: errorFromResponse, data: dataFromResponse }) => {
-        setIsLoading(false);
+      socket.emit(
+        eventName,
+        dataToSend,
+        ({ error: errorFromResponse, data: dataFromResponse }) => {
+          setIsLoading(false);
 
-        if (errorFromResponse) {
-          setError(errorFromResponse);
-          return;
+          if (errorFromResponse) {
+            setError(errorFromResponse);
+
+            reject(errorFromResponse);
+            return;
+          }
+
+          dispatch({
+            type: createActionType(eventName, true),
+            payload: dataFromResponse
+          });
+
+          resolve(dataFromResponse);
+          setData(dataFromResponse);
         }
-
-        dispatch({
-          type: createActionType(eventName, true),
-          payload: dataFromResponse
-        });
-
-        setData(dataFromResponse);
-      }
-    );
+      );
+    });
   };
 
   return {

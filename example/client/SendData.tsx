@@ -4,12 +4,17 @@ import { useSelector } from 'react-redux';
 import { useSendData } from '../../src'; 
 import { messages } from './constants';
 
+const { useState } = React;
+
 export const SendData = () => {
   const { data, sendData, isLoading } = useSendData(messages.UPDATE_ITEM);
   const { result: dataFromRedux, isLoading: isLoadingFromRedux } = useSelector(state => state);
+  const [dataFromMethod, setDataFromMethod] = useState(null);
 
-  const handleClick = withError => {
-    sendData({ data: { counter: 1 } });
+  const handleClick = async () => {
+    const result = await sendData({ data: { counter: 1 } });
+
+    setDataFromMethod(result);
   }
 
   return (
@@ -19,6 +24,7 @@ export const SendData = () => {
 
       {isLoading ? <div data-cy='spinner-from-hook'>Sending data</div> : null}
       {data ? <div data-cy='result-from-hook'>{data.result}</div> : null}
+      {dataFromMethod ? <div data-cy='result-from-method'>{dataFromMethod.result}</div> : null}
 
       <button data-cy='sendData' onClick={handleClick}>Send data</button>
     </>

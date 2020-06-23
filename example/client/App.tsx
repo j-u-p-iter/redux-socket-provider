@@ -10,6 +10,7 @@ import { GetData } from './GetData';
 import { GetDataWithError } from './GetDataWithError';
 import { ListenMessage } from './ListenMessage';
 import { ListenMessageWithError } from './ListenMessageWithError';
+import { ListenMessageWithoutResponse } from './ListenMessageWithoutResponse';
 
 import { reducer } from './reducer';
 
@@ -18,7 +19,7 @@ export const App: React.FC = () => {
 
   return (
     <Provider store={store}>
-      <ReduxSocketProvider url='http://localhost:5000'>
+      <ReduxSocketProvider url='http://localhost:7000'>
         <Router>
           <Route path='/send-data'>
             <SendData />
