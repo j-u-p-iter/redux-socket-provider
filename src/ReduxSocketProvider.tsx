@@ -13,7 +13,7 @@ export const ReduxSocketProvider: React.FC<ReduxSocketProviderProps> = ({
   url,
   children
 }) => {
-  const socketRef = useRef();
+  const socketRef = useRef(null);
 
   if (!socketRef.current) {
     socketRef.current = io(url);
