@@ -5,17 +5,13 @@ orbs:
 
 jobs:
   - cypress/validate:
-      steps:
-        - checkout
-        - run: yarn install
-        - run: yarn run validate
+      run: yarn install
+      run: yarn run validate
 
   - cypress/deploy:
-      steps:
-        - checkout
-        - run: yarn install
-        - run: yarn run build
-        - run: yarn run deploy
+      run: yarn install
+      run: yarn run build
+      run: yarn run deploy
 
 workflows:
   version: 2
