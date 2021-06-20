@@ -1,16 +1,9 @@
 version: 2.1
 
-orbs:
-  cypress: cypress-io/cypress@1
-
 jobs:
-  - cypress/validate:
-    steps:
-      - checkout
-      - run: yarn install
-      - run: yarn run validate
-
-  - cypress/deploy:
+  deploy:
+    docker:
+      - image: circleci/node:10
     steps:
       - checkout
       - run: yarn install
@@ -19,10 +12,7 @@ jobs:
 
 workflows:
   version: 2
-  validate-and-deploy:
+  deploy:
     jobs:
-      - validate
-      - deploy:
-          context: package
-          requires:
-            - validate
+      - deploy
+   
