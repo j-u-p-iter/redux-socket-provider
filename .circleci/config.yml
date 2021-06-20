@@ -1,26 +1,21 @@
 version: 2.1
 
-aliases:
-  - &docker
-    - image: circleci/node:stretch
+orbs:
+  cypress: cypress-io/cypress@1
 
 jobs:
-  validate:
-    docker: *docker
+  - cypress/validate:
+      steps:
+        - checkout
+        - run: yarn install
+        - run: yarn run validate
 
-    steps:
-      - checkout
-      - run: yarn install
-      - run: yarn run validate
-
-  deploy:
-    docker: *docker
-
-    steps:
-      - checkout
-      - run: yarn install
-      - run: yarn run build
-      - run: yarn run deploy
+  - cypress/deploy:
+      steps:
+        - checkout
+        - run: yarn install
+        - run: yarn run build
+        - run: yarn run deploy
 
 workflows:
   version: 2
