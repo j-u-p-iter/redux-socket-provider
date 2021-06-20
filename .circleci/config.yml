@@ -1,8 +1,8 @@
 version: 2.1
 
-aliases:
-  - &docker
-    - image: ubuntu-1604:202004-01
+#aliases:
+  #- &docker
+    #- image: ubuntu-1604:202004-01
 
 jobs:
   validate:
