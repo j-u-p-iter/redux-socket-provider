@@ -7,20 +7,35 @@ interface ReduxSocketProviderProps {
   url: string;
 }
 
-const { useRef } = React;
+const { useState, useEffect } = React;
+
+/**
+ * Write an article about this update
+ *
+ *
+ */
 
 export const ReduxSocketProvider: React.FC<ReduxSocketProviderProps> = ({
   url,
   children
 }) => {
-  const socketRef = useRef(null);
+  const [socket, setSocket] = useState(null);
 
-  if (!socketRef.current) {
-    socketRef.current = io(url);
+  useEffect(() => {
+    /**
+     * Initialization is an asynchronous process,
+     *   so, it should be put into the useEffect.
+     *
+     */
+    setSocket(io(url));
+  }, []);
+
+  if (!socket) {
+    return null;
   }
 
   return (
-    <ReduxSocketProviderContext.Provider value={{ socket: socketRef.current }}>
+    <ReduxSocketProviderContext.Provider value={{ socket }}>
       {children}
     </ReduxSocketProviderContext.Provider>
   );
