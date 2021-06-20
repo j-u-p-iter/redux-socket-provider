@@ -2,7 +2,7 @@ version: 2.1
 
 aliases:
   - &docker
-    - image: circleci/openjdk:8-jdk-node-browsers
+    - image: circleci/openjdk:18-ea-1-jdk-buster-node-browsers-legacy
 
 jobs:
   validate:
